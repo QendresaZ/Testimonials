@@ -1,0 +1,21 @@
+<?php
+declare(strict_types=1);
+/**
+ * @var $block \GreatCompany\Testimonials\Block\Testimonial
+ */
+
+$items = $block->getSlidersByTag('General');
+?>
+
+<div class="owl-carousel owl-theme">
+    <?php foreach ($items as $item): ?>
+        <div><?= $item->getData('title'); ?></div>
+    <?php endforeach; ?>
+</div>
+
+<script>
+    require(['jquery', 'owlcarouselslider'], function ($, owl) {
+        'use strict';
+        $('.owl-carousel').owlCarousel();
+    });
+</script>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="greatcompany_testimonials_category" resource="default" engine="innodb"
+           comment="Testimonials Category Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Testimonial Category Entity ID"/>
+        <column xsi:type="varchar" name="name" length="255" comment="Testimonial category name"/>
+        <column xsi:type="varchar" name="description" length="255" nullable="true" comment="Testimonial category description"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="GREATCOMPANY_TESTIMONIALS_NAME">
+            <column name="name"/>
+        </constraint>
+    </table>
+    <table name="greatcompany_testimonials_testimonial" resource="default" engine="innodb"
+           comment="Testimonials Table">
+        <column xsi:type="bigint" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="title" length="255" nullable="false" comment="Testimonial title"/>
+        <column xsi:type="text" name="content" nullable="false" comment="Testimonial Text"/>
+        <column xsi:type="int" name="position" padding="11" comment="Testimonial position"/>
+        <column xsi:type="timestamp" name="created_on" on_update="false" default="CURRENT_TIMESTAMP" comment="Testimonial created date"/>
+        <column xsi:type="varchar" name="author_name" length="255" nullable="false" comment="Testimonial author"/>
+        <column xsi:type="int" name="category_id" padding="11" comment="Testimonial category ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CATEGORY_ID_FK" table="greatcompany_testimonials_testimonial" column="category_id" referenceTable="greatcompany_testimonials_category" referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+</schema>

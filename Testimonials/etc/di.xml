@@ -1,0 +1,26 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="GreatCompany\Testimonials\Api\TestimonialRepositoryInterface" type="GreatCompany\Testimonials\Model\TestimonialRepository"/>
+    <preference for="GreatCompany\Testimonials\Api\Data\TestimonialInterface" type="GreatCompany\Testimonials\Model\Testimonial"/>
+    <preference for="GreatCompany\Testimonials\Api\TestimonialCategoryRepositoryInterface" type="GreatCompany\Testimonials\Model\TestimonialCategoryRepository"/>
+    <preference for="GreatCompany\Testimonials\Api\Data\TestimonialCategoryInterface" type="GreatCompany\Testimonials\Model\TestimonialCategory"/>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="testimonials_index_index_listing_data_source" xsi:type="string">GreatCompany\Testimonials\Model\ResourceModel\Testimonial\Collection</item>
+                <item name="testimonialcategory_listing_data_source" xsi:type="string">GreatCompany\Testimonials\Model\ResourceModel\TestimonialCategory\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="GreatCompany\Testimonials\Model\ResourceModel\Testimonial\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">greatcompany_testimonials_testimonial</argument>
+            <argument name="resourceModel" xsi:type="string">GreatCompany\Testimonials\Model\ResourceModel\Testimonial</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GreatCompany\Testimonials\Model\ResourceModel\TestimonialCategory\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">greatcompany_testimonials_category</argument>
+            <argument name="resourceModel" xsi:type="string">GreatCompany\Testimonials\Model\ResourceModel\TestimonialCategory</argument>
+        </arguments>
+    </virtualType>
+</config>

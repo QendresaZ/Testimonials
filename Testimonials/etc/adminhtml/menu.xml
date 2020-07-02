@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="GreatCompany_Testimonials::testimonials" title="Testimonials" module="GreatCompany_Testimonials" sortOrder="51" resource="GreatCompany_Testimonials::testimonial" />
+        <add id="GreatComapny_Testimonials::testimonial" title="Manage Testimonials" module="GreatCompany_Testimonials" sortOrder="10" action="testimonials/index/index" resource="GreatCompany_Testimonials::testimonial" parent="GreatCompany_Testimonials::testimonials" />
+        <add id="GreatComapny_Testimonials::testimonialCategory" title="Manage Testimonial Category" module="GreatCompany_Testimonials" sortOrder="11" action="testimonials/testimonialCategory/index" resource="GreatCompany_Testimonials::testimonialCategory" parent="GreatCompany_Testimonials::testimonials" />
+    </menu>
+</config>
